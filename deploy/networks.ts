@@ -336,11 +336,94 @@ const renvmTestnetConfig = {
 
 const renvmDevnetConfig = {
     darknodeRegistry: "",
-    mintAuthority: "0x1A5650DAd360803ea7912b7a0a747446b554a5BE00",
+    mintAuthority: "0x12abad81b579ca6982dc9e11b4584f76d6ede9b1294b3b8f77b746947c4eb77200",
     tokenPrefix: "dev" as const,
 };
 
 export const networks: { [network: string]: NetworkConfig } = {
+    testGoerli: {
+        mintAuthority: "0xb2fc7715492a0f1bef5809f4d75e5ebab224abc8ed07ff5091fde2b3a27db5d900",
+        darknodeRegistry: "0x9954C9F839b31E82bc9CA98F234313112D269712",
+        tokenPrefix: "test",
+        chainName: Chain.Ethereum,
+
+        mintGateways: [
+            {
+                //  renBTC
+                symbol: "BTC",
+                decimals: 8,
+                token: "",
+                gateway: "",
+            },
+            {
+                // renZEC
+                symbol: "ZEC",
+                decimals: 8,
+                token: "",
+                gateway: "",
+            },
+            {
+                // renBCH
+                symbol: "BCH",
+                decimals: 8,
+                token: "",
+                gateway: "",
+            },
+        ],
+        lockGateways: [
+            {
+                symbol: "DAI",
+                token: { totalSupply: "500,000,000" },
+                decimals: 18,
+            },
+            {
+                symbol: "REN",
+                token: { totalSupply: "1,000,000,000" },
+                decimals: 18,
+            },
+        ],
+    },
+    bscTestnet: {
+        mintAuthority: "0xb2fc7715492a0f1bef5809f4d75e5ebab224abc8ed07ff5091fde2b3a27db5d900",
+        darknodeRegistry: "0x9954C9F839b31E82bc9CA98F234313112D269712",
+        tokenPrefix: "test",
+        chainName: Chain.BinanceSmartChain,
+        lockGateways: [
+          {
+              //  renBTC
+              symbol: "BTC",
+              decimals: 8,
+              token: { totalSupply: "500,000,000" },
+              gateway: "",
+          },
+          {
+              // renZEC
+              symbol: "ZEC",
+              decimals: 8,
+              token: { totalSupply: "500,000,000" },
+              gateway: "",
+          },
+          {
+              // renBCH
+              symbol: "BCH",
+              decimals: 8,
+              token: { totalSupply: "500,000,000" },
+              gateway: "",
+          },
+      ],
+      mintGateways: [
+          {
+              symbol: "DAI",
+              token: "",
+              decimals: 18,
+          },
+          {
+              symbol: "REN",
+              token: "",
+              decimals: 18,
+          },
+      ],
+    },
     hardhat: {
         mintAuthority: "0x000000000000000000000000000000000000000100",
         darknodeRegistry: "0x0000000000000000000000000000000000000002",
@@ -522,6 +605,8 @@ export const networks: { [network: string]: NetworkConfig } = {
 
     ethereumDevnet: {
         chainName: Chain.Ethereum,
+        // Update the salt for every e2e deployment
+        create2SaltOverride: "REN.RC6",
         ...renvmDevnetConfig,
 
         mintGateways: [
@@ -529,50 +614,50 @@ export const networks: { [network: string]: NetworkConfig } = {
                 // devBTC
                 symbol: "BTC",
                 decimals: 8,
-                token: "0x581347fc652f9FCdbCA8372A4f65404C4154e93b",
-                gateway: "0xb4fc6D131A44A3b44668E997Ce0CE00A52D4D9ed",
+                token: "0x0D36bAd1e8a60C48b6e4CD6e48F3AB9951c823E0",
+                gateway: "0xca8834b06a0a101C36F1F9b9B11E8bf362613034",
             },
             {
                 // devZEC
                 symbol: "ZEC",
                 decimals: 8,
-                token: "0x6f35D542f3E0886281fb6152010fb52aC6B931F6",
-                gateway: "0x3E31c6E07Eb4C471A6443e90E304E9C68dcdEd7d",
+                token: "0x8867bF04f9b2F5Ee0d3db4D8Fe6d0589d5bcFB51",
+                gateway: "0xC961013Fa5aaEc3b4440af59af416c76349b1A19",
             },
             {
                 // devBCH
                 symbol: "BCH",
                 decimals: 8,
-                token: "0x148234809A551c131951bD01640494eecB905b08",
-                gateway: "0x86efB11aF3f2c3E3df525a851e3F28E03F4Dcb17",
+                token: "0x2D5897dFaDCb40084698D7CBbb9DAF1134fe7869",
+                gateway: "0x4939CE6a66a1271cca3355E22a071dcB77bd3273",
             },
             {
                 // devFIL
                 symbol: "FIL",
                 decimals: 18,
-                token: "",
-                gateway: "",
+                token: "0x794ab35ABcf95602eA16795f7b1A89Bf974E70F6",
+                gateway: "0x8f444B43B7FF58390D4450f1d7Fde2801B161A5C",
             },
             {
                 // devDGB
                 symbol: "DGB",
                 decimals: 8,
-                token: "0x73E1E84B3bAe87c06FD694b6C2be3bb9d254de5E",
-                gateway: "0x8b127F7095413a0EbF68050bCc57faD6eF44D12D",
+                token: "0xe3A79ba43D1731Ea3149EB60800B0EbFf15c022B",
+                gateway: "0xf274049A675339Ce742AA0125052417B44C4B16E",
             },
             {
                 // devtDOGE
                 symbol: "DOGE",
                 decimals: 8,
-                token: "0x68eF7e45b2A23D6851c36F0ac17026c51CDC968D",
-                gateway: "0x8B8C3eb521f39b968Dd599d9eF8849Db7aebDA09",
+                token: "0xf6912976BcdF66525551408563F05e68D6832789",
+                gateway: "0x88eA214DAA50d38Fe8b73c32A0791e587A13e52E",
             },
             {
                 // devLUNA
                 symbol: "LUNA",
                 decimals: 6,
-                token: "0x8a71f84BFF32926f948164F148121079598fA70c",
-                gateway: "0x30dec16dFff3fDD84dc885eCB1A3F200628D8Ef5",
+                token: "0xe75f512e123a3e7B6B705D67CaA7F8c6aa7f095d",
+                gateway: "0xc69afce93e1A0faa6d38831f644f8600f0d3e4b9",
             },
         ],
     },
@@ -704,7 +789,7 @@ export const networks: { [network: string]: NetworkConfig } = {
         ],
     },
 
-    bscTestnet: {
+    bscTestnetOld: {
         ...renvmTestnetConfig,
         chainName: Chain.BinanceSmartChain,
 

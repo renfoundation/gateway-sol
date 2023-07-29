@@ -135,7 +135,7 @@ export const setupCreate2 =
 
         const { deployer } = await getNamedAccounts();
         const salt = keccak256(Buffer.from(create2SaltOverrideAlt || create2SaltOverride || create2Salt(network.name)));
-        logger.log(`Deploying ${name} from ${deployer} (salt: keccak256(${create2Salt(network.name)}))`);
+        logger.log(`Deploying ${name} from ${deployer} (salt: ${salt})`);
 
         const result = await deploy(name, {
             from: deployer,

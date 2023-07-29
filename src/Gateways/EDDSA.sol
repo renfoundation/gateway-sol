@@ -28,7 +28,7 @@ library EDDSA {
     function validate(bytes memory _pubKey) internal pure {
         // PubKey
         uint256 x;
-        uint8 parity; 
+        uint8 parity;
 
         assembly {
             x := mload(add(_pubKey, 0x20))
@@ -49,7 +49,7 @@ library EDDSA {
 
         // PubKey
         uint256 x;
-        uint8 parity; 
+        uint8 parity;
 
         // Signature
         uint256 rx;
