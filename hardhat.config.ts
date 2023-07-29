@@ -66,7 +66,7 @@ const config: HardhatUserConfig = {
             gasPrice: 2.5 * 1e9,
         },
         ethereumDevnet: {
-            url: `https://kovan.infura.io/v3/${INFURA_KEY}`,
+            url: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
             accounts: {
                 mnemonic: MNEMONIC_DEVNET,
             },
@@ -215,9 +215,7 @@ const config: HardhatUserConfig = {
         timeout: 0,
     },
     etherscan: {
-        // Your API key for Etherscan
-        // Obtain one at https://etherscan.io/
-        apiKey: process.env.BSCSCAN_KEY,
+        apiKey: process.env.ETHERSCAN_API_KEY,
     },
 };
 

@@ -152,7 +152,7 @@ contract MintGatewayV4 is Initializable, ContextUpgradeable, GatewayStateV4, Gat
                         StringsUpgradeable.toHexString(uint256(pHash), 32),
                         ", amountOrTokenId: ",
                         StringsUpgradeable.toString(amountOrTokenId),
-                        ", shash",
+                        ", shash: ",
                         StringsUpgradeable.toHexString(uint256(getSelectorHash()), 32),
                         ", msg.sender: ",
                         StringsUpgradeable.toHexString(uint160(recipient), 20),

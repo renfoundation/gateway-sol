@@ -370,15 +370,9 @@ export const deployGatewaySol = async function (
         } else {
             logger.log(`Skipping ${symbol} - ${existingGateway}, ${existingToken}!`);
         }
-        let updatedGateway;
-        // if (network.name === "hardhat") {
-            // This is cause the gatewayRegistry doesnot return a falsey value in hardhat rather return a 0x0 string address
-            updatedGateway = (existingGateway !== Ox0) ? existingGateway : Ox(await gatewayRegistry.getMintGatewayBySymbol(symbol));
-        // }
-        // else {
-        //     updatedGateway = existingGateway || Ox(await gatewayRegistry.getMintGatewayBySymbol(symbol));
-        // }
 
+        const updatedGateway =
+            existingGateway !== Ox0 ? existingGateway : Ox(await gatewayRegistry.getMintGatewayBySymbol(symbol));
         const updatedToken = existingToken || Ox(await gatewayRegistry.getRenAssetBySymbol(symbol));
 
         const gatewayLabel = `ren${symbol}_MintGateway_Proxy`;
@@ -481,14 +475,9 @@ export const deployGatewaySol = async function (
           console.log(Ox(await gatewayInstance.getSignatureVerifier()));
             logger.log(`Skipping ${symbol} - ${existingGateway}, ${existingToken}!`);
         }
-        let updatedGateway;
-        // if (network.name === "hardhat") {
-        //     // This is cause the gatewayRegistry doesnot return a falsey value in hardhat rather returns a 0x0 string address
-            updatedGateway = (existingGateway !== Ox0) ? existingGateway : Ox(await gatewayRegistry.getLockGatewayBySymbol(symbol));
-        // }
-        // else {
-        //  updatedGateway = existingGateway || Ox(await gatewayRegistry.getMintGatewayBySymbol(symbol));
-        // }
+
+        const updatedGateway =
+            existingGateway !== Ox0 ? existingGateway : Ox(await gatewayRegistry.getLockGatewayBySymbol(symbol));
         const gatewayLabel = `ren${symbol}_LockGateway_Proxy`;
         await deployments.save(gatewayLabel, {
             ...beaconDeployment,
